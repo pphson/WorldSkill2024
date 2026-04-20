@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Primary Add Button Styling */
+.btn-add {
+    background-color: #88edaa;
+    color: #1a4f2e;
+    border: none;
+    padding: 10px 16px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+}
+
+.btn-add:hover {
+    opacity: 0.8;
+}
+
+/* Grid Layout for Counters */
+.counters-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Individual Counter Card */
+.counter-card {
+    border: 1px solid #a0a0a0;
+    padding: 30px 20px;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+}
+
+.counter-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Action Buttons within Cards */
+.btn-decrease, .btn-increase {
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+}
+
+.btn-decrease {
+    background-color: #6b8cce;
+}
+
+.btn-increase {
+    background-color: #cc6666;
+}
+
+.btn-decrease:hover, .btn-increase:hover {
+    opacity: 0.9;
+}

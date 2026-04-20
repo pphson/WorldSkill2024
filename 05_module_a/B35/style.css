@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: gray;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+canvas {
+    background: white;
+}
+
+/* Khu điều khiển bên phải */
+.control {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input, button {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+}
+
+button {
+    cursor: pointer;
+    background: #4cafef;
+    color: white;
+}
+
+button:hover {
+    background: #2196f3;
+}

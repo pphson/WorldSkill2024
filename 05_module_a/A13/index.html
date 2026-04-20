@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gooey Drip Effect</title>
+    <style>
+        /* Reset cơ bản và căn giữa nội dung */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white; /* Màu nền ngoài để dễ phân biệt */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container chứa hiệu ứng */
+        .gooey-container {
+            width: 400px;
+            height: 300px;
+            background-color: black;
+            position: relative;
+            
+            /* ĐÂY LÀ PHÉP MÀU: Tăng độ tương phản cực mạnh cho container */
+            filter: contrast(30);
+        }
+
+        /* Hình dáng chung của thanh ngang (bar) */
+        .bar {
+            width: 250px;
+            height: 40px;
+            background-color: white;
+            border-radius: 20px; /* Bo tròn tạo hình viên thuốc */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* Làm mờ thanh ngang */
+            filter: blur(15px);
+        }
+
+        /* Vị trí thanh trên và dưới */
+        .bar.top {
+            top: 30px;
+        }
+
+        .bar.bottom {
+            bottom: 30px;
+        }
+
+        /* Giọt nước (drop) */
+        .drop {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%; /* Hình tròn */
+            position: absolute;
+            left: 50%;
+            margin-left: -20px; /* Căn giữa theo trục X */
+            
+            /* Làm mờ giọt nước để hòa quyện với thanh ngang */
+            filter: blur(15px);
+            
+            /* Gọi animation */
+            animation: dripAnimation 2.5s infinite ease-in-out;
+        }
+
+        /* Khung hình chuyển động cho giọt nước */
+        @keyframes dripAnimation {
+            0% {
+                top: 30px; /* Bắt đầu ẩn bên trong thanh trên */
+            }
+            15% {
+                top: 30px; /* Dừng một nhịp trước khi rơi */
+            }
+            50% {
+                top: 130px; /* Rơi xuống giữa không trung */
+                height: 45px; /* Kéo dài một chút khi rơi để tạo độ chân thực */
+                width: 35px;
+            }
+            85% {
+                top: 230px; /* Chạm vào thanh dưới */
+                height: 40px;
+                width: 40px;
+            }
+            100% {
+                top: 230px; /* Nằm gọn trong thanh dưới */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gooey-container">
+        <div class="bar top"></div>
+        
+        <div class="drop"></div>
+        
+        <div class="bar bottom"></div>
+    </div>
+
+</body>
+</html>

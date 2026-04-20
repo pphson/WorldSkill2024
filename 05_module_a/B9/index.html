@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="compare">
+        <input type="range" min="0" max="100" value="50"
+               oninput="this.parentElement.style.setProperty('--pos', this.value + '%')">
+
+        <img src="assets/after.jpg" class="after">
+        <img src="assets/before.jpg" class="before">
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Compressor</title>
+    <style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center; /* căn ngang */
+        align-items: center;     /* căn dọc */
+        text-align: center;      /* căn chữ */
+        font-family: Arial;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Folder Zip Tool</h2>
+
+    <input type="file" id="folderInput" webkitdirectory multiple>
+
+    <button onclick="compressFolder()">Compress</button>
+
+    <p id="status"></p>
+</div>
+
+<!-- JSZip CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+async function compressFolder() {
+    const input = document.getElementById("folderInput");
+    const status = document.getElementById("status");
+
+    if (!input.files.length) {
+        alert("Please select a folder!");
+        return;
+    }
+
+    const zip = new JSZip();
+    const files = Array.from(input.files);
+
+    // Get root folder name
+    const rootFolder = files[0].webkitRelativePath.split("/")[0];
+
+    let fileCount = 0;
+
+    files.forEach(file => {
+        // Skip empty files (size = 0) if needed
+        if (file.size === 0) return;
+
+        const relativePath = file.webkitRelativePath;
+
+        zip.file(relativePath, file);
+        fileCount++;
+    });
+
+    if (fileCount === 0) {
+        alert("Folder is empty or contains only empty subfolders!");
+        return;
+    }
+
+    status.innerText = "Compressing...";
+
+    const content = await zip.generateAsync({ type: "blob" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(content);
+    link.download = rootFolder + ".zip";
+    link.click();
+
+    status.innerText = "Done!";
+}
+</script>
+
+</body>
+</html>

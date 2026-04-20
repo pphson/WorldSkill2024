@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Chart CSS</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #fff;
+        }
+
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 40px;
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            border: 2px solid #111;
+        }
+
+        .bar {
+            width: 40px;
+            height: 0;
+        }
+
+        /* chiều cao từng cột */
+        .bar:nth-child(1) { --h: 90%; background: #e74c3c; }
+        .bar:nth-child(2) { --h: 30%; background: #2ecc71; }
+        .bar:nth-child(3) { --h: 60%; background: #6787ef; }
+
+
+        /* hover để chạy animation */
+        .chart:hover .bar {
+            animation: grow 1s forwards;
+        }
+
+        /* chạy lần lượt */
+        .chart:hover .bar:nth-child(1) { animation-delay: 0s; }
+        .chart:hover .bar:nth-child(2) { animation-delay: 0.2s; }
+        .chart:hover .bar:nth-child(3) { animation-delay: 0.4s; }
+
+
+        @keyframes grow {
+            from { height: 0; }
+            to { height: var(--h); }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="chart">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+
+    </div>
+
+</body>
+</html>

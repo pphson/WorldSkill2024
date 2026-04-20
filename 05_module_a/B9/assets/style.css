@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+}
+
+.compare {
+    position: relative;
+    width: 600px;
+    height: 350px;
+    overflow: hidden;
+    --pos: 50%;
+}
+
+/* ảnh chung */
+.compare img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ảnh trên (before) bị cắt */
+.compare img:nth-of-type(2) {
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+/* slider đè lên */
+.compare input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 2;
+}
+
+/* vẽ splitter bằng pseudo-element */
+.compare::after {
+    content: "";
+    position: absolute;
+    left: var(--pos);
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: white;
+}
