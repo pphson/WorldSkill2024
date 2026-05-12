@@ -1,0 +1,11 @@
+# Bỏ qua thư mục node_modules (Theo yêu cầu đề bài)
+node_modules/
+
+# Bỏ qua các file rác của hệ điều hành macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Bỏ qua log file của server
+*.log

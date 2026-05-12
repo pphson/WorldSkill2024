@@ -1,0 +1,62 @@
+/* --- RESET & CƠ BẢN --- */
+body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+.sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; } /* Hỗ trợ Accessibility */
+
+/* --- BỐ CỤC BÀI VIẾT --- */
+.content-container { display: flex; max-width: 1200px; margin: 20px auto; gap: 40px; padding: 0 20px; }
+.main-content { flex: 1; }
+.meta-aside { width: 250px; }
+
+/* 1. STICKY ASIDE [cite: 147] */
+.meta-aside {
+    position: sticky;
+    top: 20px; /* Dính lại cách top 20px khi cuộn */
+    height: fit-content;
+    background: #f4f4f4; padding: 15px; border-radius: 8px;
+}
+
+/* 2. TYPOGRAPHY TIÊU ĐỀ [cite: 139] */
+h1.post-title {
+    font-variant-ligatures: common-ligatures; /* Yêu cầu bắt buộc của đề */
+    font-size: 2.5em;
+    margin-top: 0;
+}
+
+/* 3. DROP CAP (Chữ cái đầu to 3 dòng) [cite: 162] */
+.post-body p:first-of-type::first-letter {
+    font-size: 3em;      /* To tương đương 3 dòng */
+    line-height: 1;      /* Ép dòng */
+    float: left;         /* Đẩy chữ nằm gọn bên trái */
+    margin-right: 8px;
+    margin-bottom: -5px;
+    font-weight: bold;
+}
+
+/* --- HÌNH ẢNH TRONG BÀI --- */
+.post-body img {
+    width: 100%; /* Full-width to container [cite: 158] */
+    height: auto;
+    cursor: pointer; /* Báo hiệu có thể click */
+    transition: transform 0.3s ease;
+}
+
+/* 4. CLASS PHÓNG TO ẢNH ZOOM (Dùng chung với JS) */
+.img-enlarged {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.85); /* Nền tối */
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+    z-index: 9999;
+    cursor: zoom-out;
+    padding: 20px; box-sizing: border-box;
+}
+
+/* --- HIỆU ỨNG SPOTLIGHT COVER IMAGE --- */
+.cover-wrapper {
+    width: 100%; height: 500px; overflow: hidden; position: relative; background: #000;
+}
+.cover-image {
+    width: 100%; height: 100%; object-fit: cover;
+    /* Hiệu ứng mask từ CSS, tọa độ --x và --y sẽ được cập nhật từ JS [cite: 128, 129] */
+    -webkit-mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black, rgba(255,255,255,0) 300px);
+    mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black, rgba(255,255,255,0) 300px);
+}
