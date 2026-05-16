@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header id="app-header">
+        <button id="btn-back" style="display: none;">&larr; Back</button>
+        <h1 id="header-title">Carparks</h1>
+    </header>
+
+    <main id="app-main">
+        <section id="view-carparks" class="view active">
+            <div id="carpark-list"></div>
+            <div id="carpark-detail" style="display: none;">
+                <h2 id="detail-name"></h2>
+                <p>Distance: <span id="detail-distance"></span> km</p>
+                <p>Available: <span id="detail-available"></span></p>
+            </div>
+        </section>
+
+        <section id="view-events" class="view">
+            <div class="event-filters">
+                <input type="date" id="filter-start" placeholder="Start Date">
+                <input type="date" id="filter-end" placeholder="End Date">
+                <button id="btn-filter-event">Filter</button>
+            </div>
+            <div id="event-list"></div>
+            <div id="event-loader">Loading more events...</div>
+        </section>
+
+        <section id="view-weather" class="view">
+            <div id="weather-scroll-container">
+                </div>
+        </section>
+
+        <section id="view-settings" class="view">
+            <div class="setting-group">
+                <h3>Theme</h3>
+                <select id="theme-select">
+                    <option value="system">System Default</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <h3>Carpark Sorting</h3>
+                <select id="sort-select">
+                    <option value="distance">By Distance</option>
+                    <option value="alphabet">By Alphabet</option>
+                </select>
+            </div>
+        </section>
+    </main>
+
+    <nav id="app-nav">
+        <button class="nav-btn active" data-target="view-carparks">Carparks</button>
+        <button class="nav-btn" data-target="view-events">Events</button>
+        <button class="nav-btn" data-target="view-weather">Weather</button>
+        <button class="nav-btn" data-target="view-settings">Setting</button>
+    </nav>
+    <script src="../geolocation_distance.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

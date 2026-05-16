@@ -1,0 +1,197 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #1c3e60;
+    --header-text: #ffffff;
+    --nav-bg: #f8f9fa;
+    --nav-active: #1c3e60;
+    --border-color: #dddddd;
+    --card-bg: #fdfdfd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1f1f1f;
+    --header-text: #ffffff;
+    --nav-bg: #1f1f1f;
+    --nav-active: #4dabf7;
+    --border-color: #333333;
+    --card-bg: #1e1e1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+/* Header - Stuck to top */
+header {
+    flex-shrink: 0;
+    height: 60px;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    flex-grow: 1;
+    text-align: center;
+}
+
+#btn-back {
+    position: absolute;
+    left: 15px;
+    background: none;
+    border: none;
+    color: var(--header-text);
+    font-size: 1rem;
+}
+
+/* Main Content - Scrollable */
+main {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.view {
+    display: none;
+    padding: 15px;
+    min-height: 100%;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Navigation - Stuck to bottom */
+nav {
+    flex-shrink: 0;
+    height: 60px;
+    background-color: var(--nav-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    color: var(--nav-active);
+    font-weight: bold;
+}
+
+/* --- Components --- */
+
+/* Carpark Item */
+.carpark-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+}
+.carpark-info h3 { margin-bottom: 5px; font-size: 1.1rem; }
+.btn-pin { background: #ddd; border: none; padding: 5px 10px; border-radius: 4px;}
+
+/* Event Item */
+.event-item {
+    margin-bottom: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.event-item img { width: 100%; height: 150px; object-fit: cover; }
+.event-item .info { padding: 15px; }
+.event-filters { display: flex; gap: 10px; margin-bottom: 15px; }
+.event-filters input { flex: 1; padding: 8px; }
+
+#event-loader { text-align: center; padding: 20px; display: none; }
+
+/* Weather Horizontal Scroll */
+#weather-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+.weather-card {
+    flex: 0 0 80%; /* Takes up 80% of width */
+    scroll-snap-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--card-bg);
+}
+
+/* CẬP NHẬT: Target thẻ SVG được fetch trực tiếp thông qua wrapper */
+.weather-icon-wrapper svg {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* CẬP NHẬT: SVG Animation Requirement */
+.weather-icon-wrapper svg path, 
+.weather-icon-wrapper svg circle {
+    stroke: #1c3e60;
+    stroke-width: 1;
+    fill: none;
+    transition: all 0.3s;
+}
+
+.weather-icon-wrapper svg:hover path, 
+.weather-icon-wrapper svg:hover circle {
+    animation: dashAnim 2s linear infinite;
+}
+
+@keyframes dashAnim {
+    0% {
+        stroke-dasharray: 50;
+        stroke-dashoffset: 200;
+    }
+    100% {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Settings */
+.setting-group {
+    margin-bottom: 20px;
+}
+.setting-group select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
