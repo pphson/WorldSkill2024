@@ -1,0 +1,10 @@
+/* Phục vụ yêu cầu Responsive Images & Layout */
+@media (max-width: 759px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .cta-section { height: 60vh; }
+    .nav-links { display: none; } /* Đơn giản hóa cho mobile */
+}
+
+@media (min-width: 760px) {
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+}

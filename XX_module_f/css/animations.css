@@ -1,0 +1,27 @@
+/* Hover Effect cho Thẻ & Bản đồ điểm (Độ phóng 1.05x, đổ bóng x=0, y=5px, blur=5px, black 30%) */
+.attraction-card.active-focus, .map-spot.active-focus, .event-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng tia sáng quét ngang qua Thẻ */
+.attraction-card::after, .event-card::after {
+    content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+}
+.attraction-card:hover::after, .event-card:hover::after {
+    animation: shineEffect 0.8s ease;
+}
+@keyframes shineEffect {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+/* Nút bấm lớn sinh trưởng viền khi di chuột */
+.cta-btn:hover {
+    border-color: #833f3f;
+    box-shadow: 0 0 15px #cc4242;
+}
