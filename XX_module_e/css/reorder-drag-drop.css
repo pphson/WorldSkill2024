@@ -1,0 +1,14 @@
+.drag-list {
+   li {
+      cursor: move;
+
+      &.drag-over {
+         outline: 2px dashed #555;
+         outline-offset: 4px;
+      }
+
+      &.dragging {
+         opacity: 0.5;
+      }
+   }
+}

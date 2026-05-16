@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Module E - Photos Slideshow</title>
+   <link rel="stylesheet" href="vendor/fontawesome-free-7.2.0-web/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/reorder-drag-drop.css">
+   <link rel="stylesheet" href="css/slideshow.css">
+   <link rel="preload" href="css/theme-A.css" as="style" id="theme-A">
+   <link rel="preload" href="css/theme-B.css" as="style" id="theme-B">
+   <link rel="preload" href="css/theme-C.css" as="style" id="theme-C">
+   <link rel="preload" href="css/theme-D.css" as="style" id="theme-D">
+   <link rel="preload" href="css/theme-E.css" as="style" id="theme-E">
+   <link rel="preload" href="css/theme-F.css" as="style" id="theme-F">
+</head>
+
+<body>
+   <header>
+      <h1>Photos Slideshow</h1>
+   </header>
+   <main>
+      <div id="add-photos" class="card">
+         <h2 class="card-header"><i class="fa-regular fa-image"></i> Load photos</h2>
+         <div class="card-body">
+            <label id="drop-zone">
+               <i class="fa-solid fa-file-circle-plus fa-3x"></i>
+               Drop photos here, or click to select.
+               <input type="file" id="file-input" multiple accept="image/*" />
+            </label>
+            <div>
+               <button id="btn-load-sample-images" class="btn btn-info">
+                  <i class="fa-regular fa-images"></i> Load Sample Photos
+               </button>
+
+               <button id="btn-clear" class="btn btn-danger">
+                  <i class="fa-regular fa-trash-can"></i> Clear
+               </button>
+            </div>
+
+
+         </div>
+      </div>
+      <div id="config" class="card">
+         <h2 class="card-header"><i class="fa-solid fa-gear"></i> Configuration</h2>
+         <div class="card-body">
+            <div id="preview">
+               <ul class="drag-list" id="preview-list">
+               </ul>
+               <p id="preview-empty">No photos.</p>
+               <p id="preview-count"> photo(s) loaded. Drag and drop to reorder.</p>
+            </div>
+            <p>
+               Slideshow mode:
+            </p>
+            <div class="radio-group" id="rdb-slideshow-mode">
+               <label class="btn btn-info">
+                  <input type="radio" name="slideshow-mode" value="manual" checked>
+                  <i class="fa-solid fa-chevron-left"></i><i class="fa-regular fa-hand"></i><i class="fa-solid fa-chevron-right"></i> Manual control
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="slideshow-mode" value="auto">
+                  <i class="fa-solid fa-play"></i> Auto play
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="slideshow-mode" value="random">
+                  <i class="fa-solid fa-shuffle"></i>Random
+               </label>
+            </div>
+            <p>Theme selection:</p>
+            <div class="radio-group" id="rdb-theme-selection">
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="A" checked>
+                  <i class="fa-solid fa-a"></i>
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="B">
+                  <i class="fa-solid fa-b"></i>
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="C">
+                  <i class="fa-solid fa-c"></i>
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="D">
+                  <i class="fa-solid fa-d"></i>
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="E">
+                  <i class="fa-solid fa-e"></i>
+               </label>
+               <label class="btn btn-info">
+                  <input type="radio" name="theme" value="F">
+                  <i class="fa-solid fa-f"></i>
+               </label>
+            </div>
+
+            <div class="text-center">
+               <p>Note: At least 4 photos are required to start the slideshow.</p>
+               <button id="btn-start-slideshow" class="btn btn-success">
+                  <i class="fa-solid fa-play"></i> Start Slideshow
+               </button>
+            </div>
+         </div>
+      </div>
+      <div id="slideshow" class="card">
+         <div id="slideshow-container" tabindex="-1">
+         </div>
+         <button id="btn-fullscreen">
+            <i class="fa-solid fa-expand"></i>
+         </button>
+         <button id="btn-exit-fullscreen">
+            <i class="fa-solid fa-compress"></i>
+         </button>
+      </div>
+      <div class="modal modal-sm" id="command-bar" data-ok-button="btn-execute-command" data-cancel-button="btn-cancel-command">
+         <form class="modal-wrapper">
+            <div class="modal-header">
+               <h2 class="modal-title"><i class="fa-solid fa-terminal"></i> Command Bar</h2>
+               <button type="button" class="btn btn-sm btn-danger modal-close">
+                  <i class="fa-solid fa-xmark"></i>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="filter-select-group" id="txtCommand">
+                  <input type="text" name="command" id="command-input">
+                  <select name="command-options" id="command-options">
+                     <option value="mode manual"></option>
+                     <option value="mode auto"></option>
+                     <option value="mode random"></option>
+                     <option value="theme A"></option>
+                     <option value="theme B"></option>
+                     <option value="theme C"></option>
+                     <option value="theme D"></option>
+                     <option value="theme E"></option>
+                     <option value="theme F"></option>
+                  </select>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-primary" id="btn-execute-command" type="submit">
+                  Execute
+               </button>
+               <button class="btn btn-danger modal-close" id="btn-cancel-command" type="button">
+                  Cancel
+               </button>
+            </div>
+         </form>
+      </div>
+      <div class="modal modal-sm" id="clear-confirm" data-ok-button="btn-confirm-clear" data-cancel-button="btn-cancel-clear">
+         <div class="modal-wrapper">
+            <div class="modal-header">
+               <h2 class="modal-title"> <i class="fa-solid fa-triangle-exclamation"></i> Confirm Clear</h2>
+               <button type="button" class="btn btn-sm btn-danger modal-close">
+                  <i class="fa-solid fa-xmark"></i>
+               </button>
+            </div>
+            <div class="modal-body">
+               <p class="text-center">Are you sure you want to clear all photos?</p>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-danger" id="btn-confirm-clear" type="button">
+                  <i class="fa-regular fa-trash-can"></i> Clear
+               </button>
+               <button class="btn btn-secondary modal-close" id="btn-cancel-clear" type="button">
+                  <i class="fa-solid fa-times"></i> No
+               </button>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <script src="js/main.js"></script>
+   <script src="js/reorder-drag-drop.js"></script>
+   <script src="js/load-config.js"></script>
+   <script src="js/slideshow.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+@property --mask-angle {
+   syntax: '<angle>';
+   inherits: true;
+   initial-value: 0deg;
+}
+
+@property --mask-width {
+   syntax: '<length>|<percentage>';
+   inherits: true;
+   initial-value: -0px;
+}
+
+#slideshow {
+   #slideshow-container {
+      .slide {
+         .wrapper {
+
+            &::after,
+            &::before {
+               content: '';
+               position: absolute;
+               inset: 0;
+               background: var(--url) center/cover no-repeat, #fff;
+               clip-path: circle(35cqmin at 50% 50%);
+               z-index: 1;
+            }
+
+            img,
+            &::after,
+            &::before {
+               --mask-angle: -180deg;
+               mask-image: conic-gradient(from 0deg at 50% 50%, #ffff 0deg, #ffff clamp(0deg, var(--mask-angle), 360deg), #0000 clamp(0deg, calc(var(--mask-angle) + 180deg), 360deg), #0000 360deg);
+               mask-size: 100% 100%;
+               mask-repeat: no-repeat;
+               mask-position: center;
+            }
+
+            &::before {
+               clip-path: circle(20cqmin at 50% 50%);
+               z-index: 2;
+            }
+
+         }
+
+         .caption {
+            z-index: 1;
+            --mask-width: -20%;
+            mask-image: linear-gradient(to right, #ffff 0%, #ffff clamp(0%, var(--mask-width), 100%), #0000 clamp(0%, calc(20% + var(--mask-width)), 100%), #0000 100%);
+            mask-size: 100% 100%;
+            mask-repeat: no-repeat;
+            mask-position: center;
+         }
+
+         &.next {
+            z-index: 2;
+
+            img,
+            &::after,
+            &::before {
+               transition: --mask-angle 0.5s 0.5s step-end, z-index 0.5s step-end;
+               --mask-angle: -180deg;
+            }
+         }
+
+         &.active {
+            z-index: 3;
+
+            .wrapper {
+
+               img,
+               &::after,
+               &::before {
+                  transition: --mask-angle 0.5s linear, z-index 0.5s step-start;
+                  --mask-angle: 360deg;
+               }
+
+               &::before {
+
+                  transition-delay: 0.1s;
+               }
+
+               &::after {
+                  transition-delay: 0.25s;
+               }
+
+
+               img {
+                  transition-delay: 0.4s;
+                  ;
+               }
+            }
+
+            .caption {
+               transition: --mask-width 0.5s 0.4s ease;
+               --mask-width: 100%;
+            }
+         }
+
+         &.previous {
+            z-index: 1;
+
+            .wrapper {
+
+               img,
+               &::after,
+               &::before {
+                  transition: none;
+                  mask-image: none;
+                  clip-path: none;
+               }
+            }
+         }
+
+      }
+   }
+}
