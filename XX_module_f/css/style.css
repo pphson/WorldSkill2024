@@ -4,27 +4,87 @@
     --bg-light: #f8f9fa;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; color: var(--text-color); line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 
 /* Header Glassmorphism */
 .main-header {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
-.nav-links { display: flex; list-style: none; gap: 20px; }
-.nav-links a { text-decoration: none; color: #000; font-weight: bold; }
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
 
 /* Call-to-Action */
-.cta-section { position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-.cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+.cta-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .cta-btn {
     position: relative;
     padding: 22px 48px;
@@ -41,16 +101,32 @@ body { font-family: Arial, sans-serif; color: var(--text-color); line-height: 1.
 }
 
 /* Map & Cards */
-.attraction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.attraction-card, .all-attractions-card, .event-card {
-    background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 4px;
-    text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden;
+.attraction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
+
+.attraction-card,
+.all-attractions-card,
+.event-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
 /* Đảm bảo khung ảnh của thẻ bo tròn đẹp mắt giống Polaroids */
 .card-image-wrapper {
     position: relative;
     width: 100%;
-    height: 200px; /* Tăng chiều cao cố định cho ảnh thẻ */
+    height: 200px;
+    /* Tăng chiều cao cố định cho ảnh thẻ */
     overflow: hidden;
     background: #eee;
 }
@@ -58,38 +134,507 @@ body { font-family: Arial, sans-serif; color: var(--text-color); line-height: 1.
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Giúp ảnh không bị méo */
+    object-fit: cover;
+    /* Giúp ảnh không bị méo */
 }
 
 /* Định vị lại vùng chứa bản đồ để các chấm tròn A, B, C nằm đúng vị trí */
 .map-container {
     position: relative;
     width: 100%;
+    height: 100% !important;
     align-self: start;
 }
 
 .map-container img {
     width: 100%;
     height: auto;
+    height: 100% !important;
     display: block;
 }
 
-.map-base { width: 100%; height: auto; display: block; }
 .map-spot {
-    position: absolute; width: 30px; height: 30px; background: rgba(255,77,77,0.7);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: white; font-weight: bold; cursor: pointer; transition: transform 0.3s;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 77, 77, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
-.spot-a { top: 30%; left: 35%; }
-.spot-b { top: 40%; left: 65%; }
-.spot-c { top: 60%; left: 50%; }
+
+.spot-a {
+    top: 30%;
+    left: 35%;
+}
+
+.spot-b {
+    top: 40%;
+    left: 65%;
+}
+
+.spot-c {
+    top: 60%;
+    left: 50%;
+}
 
 /* Latest Events Slider */
-.events-slider { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scroll-behavior: smooth; }
-.event-card { min-width: 280px; flex-shrink: 0; }
+.events-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.event-card {
+    min-width: 280px;
+    flex-shrink: 0;
+}
 
 /* Footer Columns */
-.main-footer { background: #222; color: #fff; padding: 40px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-.footer-col h4 { margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px; }
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 8px; }
+.main-footer {
+    background: #222;
+    color: #fff;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+
+
+
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* 1. Header Glassmorphism sát đề bài */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #0000ff;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+/* 2. Call-to-Action thiết kế tối giản */
+.cta-section {
+    position: relative;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cta-btn {
+    position: relative;
+    padding: 14px 35px;
+    font-size: 15px;
+    color: #333;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+/* Khung chứa bao trọn cả Thẻ và Điểm ghim */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* THÊM CÁI NÀY: Làm gốc tọa độ cho lớp màng định vị phía dưới */
+    position: relative;
+}
+
+/* Khung lưới 4 thẻ bài bên trái */
+.attraction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.attraction-card,
+.all-attractions-card {
+    background: rgba(255, 255, 255, 0.95);
+    /* Màu trắng hơi trong suốt để thấy mờ mờ map ở dưới */
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.attraction-card h3,
+.all-attractions-card h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* KHU VỰC ĐỊNH VỊ CHẤM GHIM BÊN PHẢI                   */
+/* ---------------------------------------------------- */
+
+/* Khung vô hình bên phải làm gốc tọa độ */
+.map-container {
+    position: absolute;
+    /* Trải dài lớp màng này lên toàn bộ .grid-2 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: 5;
+    pointer-events: none;
+    /* QUAN TRỌNG: Làm lớp màng tàng hình xuyên thấu để không cản trở việc click vào 4 thẻ bài bên dưới */
+}
+
+/* Định dạng các chấm tròn A, B, C */
+.map-spot {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #ffb3b3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+    pointer-events: auto;
+    /* QUAN TRỌNG: Bật lại tính năng hover/click riêng cho các chấm ghim */
+}
+
+/* 4. TỌA ĐỘ MỚI: Giờ đây % được tính trên TỔNG CHIỀU RỘNG của toàn bộ bức ảnh nền */
+.spot-a {
+    top: 30%;
+    left: 88%;
+}
+
+/* Góc trên cùng bên phải */
+.spot-b {
+    top: 60%;
+    left: 78%;
+}
+
+/* Nằm giữa trung tâm khu phố */
+.spot-c {
+    top: 35%;
+    left: 65%;
+}
+
+/* Chệch về phía giữa bản đồ, nơi có khúc sông */
+
+/* 4. Video section hẹp theo bố cục */
+.video-section {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    background: #000;
+    margin: 20px 0;
+}
+
+.video-section video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --------------------------------------------------- */
+/* 5. KHỐI ESSENTIAL VÀ LATEST EVENTS (CHIA 2 CỘT)     */
+/* --------------------------------------------------- */
+
+/* Bố cục Grid chia 2 cột: Trái (4 phần) - Phải (6 phần) */
+.split-layout {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    gap: 50px;
+    align-items: start;
+    /* Ép 2 cột canh đều từ trên xuống */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Tiêu đề khổng lồ (Sát với mẫu thiết kế) */
+.huge-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+/* Định dạng chữ thông tin */
+.essential-box .info-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Nút bấm Read it Loud */
+.blue-btn {
+    background-color: #12308c;
+    color: #ffffff;
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.blue-btn:hover {
+    background-color: #0e2469;
+}
+
+.events-box {
+    min-width: 0; /* Ép Grid hiểu rằng cột này có thể thu nhỏ lại, không được phình ra theo nội dung con */
+    width: 100%;
+}
+
+/* Khung viền mỏng bao quanh phần Events Slider */
+.events-slider-container {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    background: #fff;
+    min-height: 250px;
+
+    max-width: 100%;  /* Ép chiều rộng không vượt qua .events-box */
+    overflow: hidden; /* Cắt gọn mọi thứ thò ra ngoài khung viền */
+}
+
+/* Slider cho các sự kiện bên trong */
+.events-slider {
+    display: flex;
+    gap: 15px; 
+    max-width: 100%;     /* Đảm bảo thanh cuộn không dài hơn container */
+    overflow-x: auto;    /* Chỉ hiện thanh cuộn ngang khi số lượng thẻ vượt quá chiều rộng */
+    padding-bottom: 10px;
+    scroll-behavior: smooth; /* Cuộn mượt mà */
+}
+
+/* Định dạng thẻ event con bên trong slider */
+.event-card {
+    width: 240px; 
+    flex-shrink: 0; /* KHÔNG CHO thẻ bị bóp méo khi màn hình nhỏ */
+    background: #fff; 
+    border: 1px solid #eee; 
+    padding: 10px; 
+    border-radius: 6px;
+}
+
+/* 6. Other Information Tabs */
+.tabs-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* --------------------------------------------------- */
+/* KHU VỰC CONTACT FORM CHUẨN LAYOUT                   */
+/* --------------------------------------------------- */
+
+.contact-section {
+    padding: 80px 20px;
+}
+
+/* 1. Khung viền xám bao quanh toàn bộ Form */
+.contact-box {
+    position: relative; /* Làm gốc tọa độ để đẩy tiêu đề lên viền */
+    max-width: 900px;   /* Độ rộng tối đa của form */
+    margin: 0 auto;
+    border: 1px solid #b3b3b3; /* Đường viền xám giống mẫu */
+    padding: 70px 50px 40px 50px; /* Đẩy padding top cao lên để lấy không gian cho tiêu đề */
+    background-color: #fff;
+}
+
+/* 2. Hộp tiêu đề nằm đè lên viền trên cùng */
+.contact-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn chuẩn chính giữa và đẩy dịch lên 50% so với viền */
+    background-color: #fff; /* Nền trắng để che đi đường viền của .contact-box phía dưới */
+    border: 1px solid #b3b3b3; /* Khung viền riêng của tiêu đề */
+    padding: 12px 30px;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #000;
+    margin: 0;
+    white-space: nowrap; /* Chống rớt dòng */
+}
+
+/* 3. Lưới chia 2 cột cho các trường nhập liệu */
+.contact-form .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột bằng nhau */
+    gap: 35px 50px; /* Khoảng cách hàng (35px), khoảng cách cột (50px) */
+}
+
+/* 4. Định dạng từng nhóm Label + Input ngang hàng */
+.contact-form .form-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Cố định chiều rộng của Label để các Input được gióng thẳng hàng dọc */
+.contact-form .form-group label {
+    width: 90px; 
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Input kéo dài lấp đầy khoảng trống còn lại */
+.contact-form .form-group input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #a0a0a0; /* Viền ô input xám nhạt */
+    font-size: 15px;
+    outline: none;
+    border-radius: 2px;
+}
+
+.contact-form .form-group input:focus {
+    border-color: #000; /* Nhấn vào thì viền đậm lên */
+}
+
+/* Nút Submit (không có trong hình mẫu nhưng vẫn cần cho chức năng) */
+.submit-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.submit-btn {
+    background-color: #12308c;
+    color: #fff;
+    border: none;
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0e2469;
+}

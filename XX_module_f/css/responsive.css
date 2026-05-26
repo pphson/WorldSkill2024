@@ -3,8 +3,48 @@
     .grid-2 { grid-template-columns: 1fr; }
     .cta-section { height: 60vh; }
     .nav-links { display: none; } /* Đơn giản hóa cho mobile */
+
+    .map-perspective-container {
+        display: flex;
+        flex-direction: column; /* Chuyển về xếp dọc tự nhiên trên mobile */
+    }
+    
+    .map-base-bg {
+        position: relative;
+        order: 2; /* Đẩy bản đồ xuống dưới */
+    }
+    
+    .attraction-grid-overlay {
+        position: relative; /* Không cho bay tự do nữa */
+        top: 0;
+        left: 0;
+        width: 100%;
+        grid-template-columns: 1fr 1fr; /* Hoặc 1fr nếu muốn 1 cột dọc hẳn */
+        padding: 10px;
+        order: 1; /* Đẩy 4 thẻ lên trên trước */
+    }
+    
+    /* Ẩn hoặc tinh chỉnh lại các nút ghim trên mobile để tránh lệch tọa độ ảnh */
+    .map-spot {
+        display: none; 
+    }
+
+    .contact-form .form-grid {
+        grid-template-columns: 1fr; /* Biến thành 1 cột xếp dọc */
+        gap: 20px;
+    }
+    
+    .contact-box {
+        padding: 60px 20px 30px 20px; /* Thu hẹp lề trên mobile */
+    }
+    
+    .contact-title {
+        font-size: 28px;
+        padding: 10px 20px;
+    }
 }
 
 @media (min-width: 760px) {
     .grid-2 { grid-template-columns: 1fr 1fr; }
 }
+
